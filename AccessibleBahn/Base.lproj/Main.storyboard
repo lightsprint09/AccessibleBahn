@@ -173,6 +173,7 @@
                                     <outlet property="stationNameLabel" destination="qdK-6J-xzU" id="i3D-Ck-PHS"/>
                                     <outlet property="stationSubtitleLabel" destination="a2S-8O-Nh4" id="C1k-a9-8aX"/>
                                     <outlet property="statusView" destination="jle-xe-Cnw" id="IpL-IV-xQN"/>
+                                    <segue destination="sca-4I-TK2" kind="show" id="aKU-Iv-07d"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -181,11 +182,42 @@
                             <outlet property="delegate" destination="Ux8-9S-rJn" id="tyu-Lg-BZO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="YDz-lz-YX6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82n-Vd-1Wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="248" y="377"/>
+        </scene>
+        <!--Elevator Location Controller-->
+        <scene sceneID="1AF-NZ-jco">
+            <objects>
+                <viewController id="sca-4I-TK2" customClass="ElevatorLocationController" customModule="AccessibleBahn" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="thh-Ho-WBq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dsv-m3-Dta"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cbk-hn-gN1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-FB-RQ0">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sgj-FB-RQ0" firstAttribute="leading" secondItem="cbk-hn-gN1" secondAttribute="leading" id="8mu-qs-J0f"/>
+                            <constraint firstItem="Sgj-FB-RQ0" firstAttribute="bottom" secondItem="Dsv-m3-Dta" secondAttribute="top" id="RaP-Zv-sfP"/>
+                            <constraint firstAttribute="trailing" secondItem="Sgj-FB-RQ0" secondAttribute="trailing" id="oEE-8q-7wK"/>
+                            <constraint firstItem="Sgj-FB-RQ0" firstAttribute="top" secondItem="thh-Ho-WBq" secondAttribute="bottom" id="sg8-jQ-7yc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Sgj-FB-RQ0" id="Bp0-mm-tkV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WMe-jg-ca6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928" y="377"/>
         </scene>
     </scenes>
 </document>

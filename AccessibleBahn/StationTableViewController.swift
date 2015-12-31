@@ -26,4 +26,10 @@ class StationTableViewController: UITableViewController {
         
         return stationCell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let locationController = segue.destinationViewController as? ElevatorLocationController, let indexPath = tableView.indexPathForSelectedRow {
+            locationController.station = stations[indexPath.row]
+        }
+    }
 }

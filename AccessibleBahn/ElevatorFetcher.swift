@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit.UIColor
+import CoreLocation
 
 enum ElevatorStatus {
     case Active, Inactiv, Unknown
@@ -51,9 +52,16 @@ public struct Location {
     public let longitude: Double
 }
 
+public extension Location {
+    public var locationCoordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+}
+
 struct Elevator {
     let status: ElevatorStatus
-    //let location: Location
+    let description: String?
+    let location: Location
 }
 
 
@@ -126,7 +134,11 @@ class ElevatorFetcher: NSObject {
     
     func parseElevator(elevatorData: [String: AnyObject]) -> Elevator {
         let state = elevatorData["state"] as! String
+        let description = elevatorData["description"] as? String
+        let longitude = elevatorData["geocoordX"] as! Double
+        let latitude = elevatorData["geocoordY"] as! Double
+        let location = Location(latitude: latitude, longitude: longitude)
         
-        return Elevator(status: ElevatorStatus.statusFromString(state))
+        return Elevator(status: ElevatorStatus.statusFromString(state), description: description, location: location)
     }
 }
