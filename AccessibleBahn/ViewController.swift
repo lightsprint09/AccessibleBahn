@@ -52,26 +52,28 @@ class ViewController: UIViewController, WKNavigationDelegate{
     }
 
     @IBAction func checkElevators(sender: AnyObject) {
-        let jsString = "function addStationsNames(className, stationSet) {  var stationNodes = document.getElementsByClassName(className);  for(var i= 0; i < stationNodes.length; i++){        var name = stationNodes[i].getElementsByClassName('bold')[0].innerHTML;         stationSet[name] = true;    } } var stationsSet = {}; addStationsNames('routeChange', stationsSet); addStationsNames('routeEnd', stationsSet); addStationsNames('routeStart', stationsSet); console.log(stationsSet); JSON.stringify(stationsSet);"
-        webView.evaluateJavaScript(jsString) { obj, err in
-            guard let result = obj as? String, let data = result.dataUsingEncoding(NSUTF8StringEncoding) else { return }
-            
-            let jsonObject = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
-            let stations: [Station] = jsonObject.keys.map {name in
-                return Station(name: name, elevators: nil)
-            }
-            self.elevatorFetcher.fetchElevatorsForTrip(stations, onSucces: {stops, status in
-                self.stops = stops
-                self.statusBarHeightContraint.constant = 58
-                self.statusTextLabel.text = status.text
-                self.statusBar.backgroundColor = status.color
-                let elevatorsCount = stops.reduce(0) { return $0 + ($1.elevators?.count ?? 0)}
-                self.elevatoCountLabel.text = "\(elevatorsCount) Fahrstühle geprüft"
-                UIView.animateWithDuration(0.3) {
-                    self.view.layoutIfNeeded()
-                }
-                }, onError: {_ in
-            })
+        let jsString = "function addStationsNames(className, stationSet) {  var stationNodes = document.getElementsByClassName(className);  for(var i= 0; i < stationNodes.length; i++){        var name = stationNodes[i].getElementsByClassName('bold')[0].innerHTML;         stationSet[name] = true;    } } var stationsSet = {}; addStationsNames('routeChange', stationsSet); addStationsNames('routeEnd', stationsSet); addStationsNames('routeStart', stationsSet); JSON.stringify(stationsSet);"
+        webView.evaluateJavaScript(jsString, completionHandler: didGetStationsData)
+    }
+    
+    func didGetStationsData(data: AnyObject?, error: NSError?) {
+        guard let result = data as? String, let data = result.dataUsingEncoding(NSUTF8StringEncoding) else { return }
+        let jsonObject = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
+        let stations: [Station] = jsonObject.keys.map {name in
+            return Station(name: name, elevators: nil)
+        }
+        self.elevatorFetcher.fetchElevatorsForTrip(stations, onSucces: didFetchStationWithElevators) { _ in}
+    }
+    
+    func didFetchStationWithElevators(statins: [Station], status: ElevatorStatus) {
+        stops = statins
+        statusBarHeightContraint.constant = 58
+        statusTextLabel.text = status.text
+        statusBar.backgroundColor = status.color
+        let elevatorsCount = stops.reduce(0) { return $0 + ($1.elevators?.count ?? 0)}
+        elevatoCountLabel.text = "\(elevatorsCount) Fahrstühle geprüft"
+        UIView.animateWithDuration(0.3) {
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -80,6 +82,7 @@ class ViewController: UIViewController, WKNavigationDelegate{
            checkRouteButtonHeightConstraint.constant = 52
         }else {
             checkRouteButtonHeightConstraint.constant = 0
+            self.statusBarHeightContraint.constant = 0
         }
         UIView.animateWithDuration(0.18) {
             self.view.layoutIfNeeded()

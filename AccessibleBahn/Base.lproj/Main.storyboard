@@ -38,20 +38,20 @@
                                 <rect key="frame" x="5" y="64" width="595" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fahrstühle alle in Ordung" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPC-7Q-zZh">
-                                        <rect key="frame" x="198" y="-15" width="199.5" height="20.5"/>
+                                        <rect key="frame" x="198" y="-18" width="199.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yew-fy-RWJ">
-                                        <rect key="frame" x="553" y="-16" width="22" height="22"/>
+                                        <rect key="frame" x="553" y="-11" width="22" height="22"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="Ux8-9S-rJn" kind="show" id="onJ-Ys-9qB"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Fahrstühle geprüft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnJ-VQ-tGi">
-                                        <rect key="frame" x="229" y="3" width="136.5" height="17"/>
+                                        <rect key="frame" x="229" y="0.0" width="136.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -60,10 +60,10 @@
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.65490196079999996" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="3xu-Td-88W"/>
-                                    <constraint firstItem="Yew-fy-RWJ" firstAttribute="centerY" secondItem="PPC-7Q-zZh" secondAttribute="centerY" id="HFJ-w6-0eh"/>
                                     <constraint firstItem="PPC-7Q-zZh" firstAttribute="centerX" secondItem="SeF-vS-r3R" secondAttribute="centerX" id="KBc-xe-Rbw"/>
                                     <constraint firstItem="DnJ-VQ-tGi" firstAttribute="top" secondItem="PPC-7Q-zZh" secondAttribute="bottom" constant="-2" id="LLD-tw-wue"/>
-                                    <constraint firstItem="PPC-7Q-zZh" firstAttribute="centerY" secondItem="SeF-vS-r3R" secondAttribute="centerY" constant="-5" id="gHV-S2-dIu"/>
+                                    <constraint firstItem="PPC-7Q-zZh" firstAttribute="centerY" secondItem="SeF-vS-r3R" secondAttribute="centerY" constant="-8" id="gHV-S2-dIu"/>
+                                    <constraint firstItem="Yew-fy-RWJ" firstAttribute="centerY" secondItem="SeF-vS-r3R" secondAttribute="centerY" id="hz5-3b-Itu"/>
                                     <constraint firstAttribute="trailing" secondItem="Yew-fy-RWJ" secondAttribute="trailing" constant="20" id="kZ7-zR-Bcg"/>
                                     <constraint firstItem="DnJ-VQ-tGi" firstAttribute="centerX" secondItem="SeF-vS-r3R" secondAttribute="centerX" id="wOf-s6-wva"/>
                                 </constraints>

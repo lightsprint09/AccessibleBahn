@@ -72,7 +72,9 @@ class ElevatorFetcher: NSObject {
     let session = NSURLSession.sharedSession()
     
     func fetchElevator(station: Station, onSucces:([Elevator])->Void, onError:(NSError)->()) {
-        guard let stationNumber = station.stationNumber, let url = NSURL(string: "/api/v1.0/stations/\(stationNumber)", relativeToURL: baseURL) else { return }
+        guard let stationNumber = station.stationNumber, let url = NSURL(string: "/api/v1.0/stations/\(stationNumber)", relativeToURL: baseURL) else {
+            onError(NSError(domain: "", code: 0, userInfo: nil))
+            return }
         print(url.absoluteString)
         let dataTaks = session.dataTaskWithURL(url) {data , _ , _ in
             do {
@@ -80,6 +82,7 @@ class ElevatorFetcher: NSObject {
                 onSucces(elevators)
                 
             }catch{
+               print(NSString(data: data!, encoding: NSUTF8StringEncoding))
             }
             
         }
