@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit.UIColor
 
 enum ElevatorStatus {
     case Active, Inactiv, Unknown
@@ -21,9 +22,38 @@ enum ElevatorStatus {
             return .Unknown
         }
     }
+    
+    var color: UIColor {
+        switch self {
+        case .Active:
+            return UIColor(red:78 / 255.0, green:167 / 255.0, blue:94 / 255.0, alpha:1.0)
+        case .Inactiv:
+            return UIColor(red:178 / 255.0, green:42 / 255.0, blue:34 / 255.0, alpha:1.0)
+        case .Unknown:
+            return UIColor(red:227 / 255.0, green:203 / 255.0, blue:89 / 255.0, alpha:1.0)
+        }
+    }
+    
+    var text: String {
+        switch self {
+        case .Active:
+            return "Alle Fahrstühle in Ordnung"
+        case .Inactiv:
+            return "Defekte Fahrstühle auf Ihrer Route"
+        case .Unknown:
+            return "Fahrstühle mit unklarem Status auf Ihrer Route"
+        }
+    }
 }
+
+public struct Location {
+    public let latitude: Double
+    public let longitude: Double
+}
+
 struct Elevator {
     let status: ElevatorStatus
+    //let location: Location
 }
 
 
@@ -35,7 +65,6 @@ func reduceActivity(previousStatus: ElevatorStatus, elevator: Elevator) -> Eleva
         return .Unknown
     }
     return elevator.status
-    
 }
 
 class ElevatorFetcher: NSObject {
@@ -57,17 +86,24 @@ class ElevatorFetcher: NSObject {
         dataTaks.resume()
     }
     
-    func fetchElevatorsForTrip(stops:[Station], onSucces:([Elevator], ElevatorStatus)->Void, onError:(NSError)->()) {
+    func fetchElevatorsForTrip(stops:[Station], onSucces:([Station], ElevatorStatus)->Void, onError:(NSError)->()) {
         var finalList = [Elevator]()
+        var stations = [Station]()
         var i = 0 {
             didSet {
                 if i == stops.count {
-                    onSucces(finalList, finalList.reduce(ElevatorStatus.Active, combine: reduceActivity))
+                    dispatch_async(dispatch_get_main_queue(), {
+                        onSucces(stations, finalList.reduce(ElevatorStatus.Active, combine: reduceActivity))
+                    })
+                    
                 }
             }
         }
         _ = stops.map{stop in
             self.fetchElevator(stop, onSucces: {elevators in
+                var stop = stop
+                stop.setElevators(elevators)
+                stations.append(stop)
                 finalList.appendContentsOf(elevators)
                 i++
                 }, onError: {_ in
