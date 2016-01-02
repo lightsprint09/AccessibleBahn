@@ -16,6 +16,7 @@ class StationCell: UITableViewCell {
     func configureWithStation(station: Station) {
         stationNameLabel.text = station.name
         statusView.backgroundColor = station.getStationElevatorStatus()?.color
-        stationSubtitleLabel.text = "\(station.elevators?.count ?? 0) Fahrstühle"
+        let elevatorCount = station.elevators?.count ?? 0
+        stationSubtitleLabel.text = "\(elevatorCount) \(Elevator.getCorrectWord(elevatorCount))"
     }
 }

@@ -62,6 +62,10 @@ struct Elevator {
     let status: ElevatorStatus
     let description: String?
     let location: Location
+    
+    static func getCorrectWord(count: Int) -> String {
+      return  count == 1 ? "Fahrstuhl" : "Fahrstühle"
+    }
 }
 
 

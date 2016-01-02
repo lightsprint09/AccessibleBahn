@@ -52,14 +52,15 @@ class ViewController: UIViewController, WKNavigationDelegate{
     }
 
     @IBAction func checkElevators(sender: AnyObject) {
-        let jsString = "function addStationsNames(className, stationSet) {  var stationNodes = document.getElementsByClassName(className);  for(var i= 0; i < stationNodes.length; i++){        var name = stationNodes[i].getElementsByClassName('bold')[0].innerHTML;         stationSet[name] = true;    } } var stationsSet = {}; addStationsNames('routeChange', stationsSet); addStationsNames('routeEnd', stationsSet); addStationsNames('routeStart', stationsSet); JSON.stringify(stationsSet);"
+        let jsString = "function addStationsNames(className, stationsList, stationsSet) {   var stationNodes = document.getElementsByClassName(className);  for(var i= 0; i < stationNodes.length; i++){        var name = stationNodes[i].getElementsByClassName('bold')[0].innerHTML;         if(stationsSet[name]) {             continue        }       var station = {name: name};         stationsList.push(station);         stationsSet[name] = true;   } } var stationsList = []; var stationsSet = {}; addStationsNames('routeStart', stationsList, stationsSet); addStationsNames('routeChange', stationsList, stationsSet); addStationsNames('routeEnd', stationsList, stationsSet); JSON.stringify(stationsList);"
         webView.evaluateJavaScript(jsString, completionHandler: didGetStationsData)
     }
     
     func didGetStationsData(data: AnyObject?, error: NSError?) {
         guard let result = data as? String, let data = result.dataUsingEncoding(NSUTF8StringEncoding) else { return }
-        let jsonObject = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
-        let stations: [Station] = jsonObject.keys.map {name in
+        let jsonList = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! [[String: AnyObject]]
+        let stations: [Station] = jsonList.map {stationobj in
+            let name = stationobj["name"] as! String
             return Station(name: name, elevators: nil)
         }
         self.elevatorFetcher.fetchElevatorsForTrip(stations, onSucces: didFetchStationWithElevators) { _ in}
@@ -71,7 +72,7 @@ class ViewController: UIViewController, WKNavigationDelegate{
         statusTextLabel.text = status.text
         statusBar.backgroundColor = status.color
         let elevatorsCount = stops.reduce(0) { return $0 + ($1.elevators?.count ?? 0)}
-        elevatoCountLabel.text = "\(elevatorsCount) Fahrstühle geprüft"
+        elevatoCountLabel.text = "\(elevatorsCount) \(Elevator.getCorrectWord(elevatorsCount)) geprüft"
         UIView.animateWithDuration(0.3) {
             self.view.layoutIfNeeded()
         }
