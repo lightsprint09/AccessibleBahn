@@ -32,4 +32,9 @@ class StationTableViewController: UITableViewController {
             locationController.station = stations[indexPath.row]
         }
     }
+    @IBAction func saveTrip(sender: UIBarButtonItem) {
+        let trip = Trip(stops: stations)
+        TripsTableViewController.trips.append(trip)
+        sender.enabled = false
+    }
 }

@@ -12,6 +12,7 @@ import MapKit
 class ElevatorLocationController: UIViewController {
     var station: Station!
     @IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         title = station.name
@@ -24,9 +25,12 @@ class ElevatorLocationController: UIViewController {
         }
         let region = MKCoordinateRegion(center: locationRegion, span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
         mapView.setRegion(region, animated: true)
-        CLLocationManager().requestWhenInUseAuthorization()
-        mapView.showsUserLocation = true
+        
     }
     
+    @IBAction func displayUserLocation(sender: AnyObject) {
+        locationManager.requestWhenInUseAuthorization()
+        mapView.showsUserLocation = true
+    }
     
 }

@@ -14,6 +14,7 @@ class ViewController: UIViewController, WKNavigationDelegate{
     @IBOutlet weak var webViewContainer: UIView!
     var webView: WKWebView!
     
+    @IBOutlet weak var browserBackbutton: UIBarButtonItem!
     let elevatorFetcher = ElevatorFetcher()
     @IBOutlet weak var statusBar: UIView!
     @IBOutlet weak var statusBarHeightContraint: NSLayoutConstraint!
@@ -79,7 +80,12 @@ class ViewController: UIViewController, WKNavigationDelegate{
     }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        if let urlString = webView.URL?.absoluteString where  urlString.containsString("details=opened") {
+        if let urlString = webView.URL?.absoluteString where urlString.containsString("country=DEU") {
+            browserBackbutton.enabled = false
+        }else {
+            browserBackbutton.enabled = true
+        }
+        if let urlString = webView.URL?.absoluteString where urlString.containsString("details=opened") {
            checkRouteButtonHeightConstraint.constant = 52
         }else {
             checkRouteButtonHeightConstraint.constant = 0

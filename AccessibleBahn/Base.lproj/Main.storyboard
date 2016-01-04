@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="E4Z-RJ-ptS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Uuj-ur-Aci">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Verbindungen-->
         <scene sceneID="LsW-Cw-BoP">
             <objects>
                 <navigationController id="E4Z-RJ-ptS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Verbindungen" image="glyphicons-15-train" selectedImage="glyphicons-15-train" id="zNe-us-2ey"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fe8-La-7wq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -107,6 +108,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="browserBackbutton" destination="edM-KQ-P7r" id="FrV-xg-nUK"/>
                         <outlet property="checkRouteButtonHeightConstraint" destination="2Ms-G9-mcd" id="Mmo-vx-Wqo"/>
                         <outlet property="elevatoCountLabel" destination="DnJ-VQ-tGi" id="1st-CG-wFY"/>
                         <outlet property="statusBar" destination="SeF-vS-r3R" id="i4b-33-r2u"/>
@@ -118,6 +120,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-437" y="377"/>
+        </scene>
+        <!--Gepeicherte Reisen-->
+        <scene sceneID="9LP-1s-zF8">
+            <objects>
+                <tableViewController id="Mg9-sV-hNl" customClass="TripsTableViewController" customModule="AccessibleBahn" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y3B-p5-fQM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stationCell" id="qHy-7w-Jph" customClass="StationCell" customModule="AccessibleBahn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qHy-7w-Jph" id="QX0-uR-paG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3b-ig-vOl" customClass="RoundView" customModule="AccessibleBahn" customModuleProvider="target">
+                                            <rect key="frame" x="572" y="12" width="20" height="20"/>
+                                            <color key="backgroundColor" red="0.69803921570000005" green="0.1647058824" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="3HZ-up-iel"/>
+                                                <constraint firstAttribute="width" constant="20" id="EDo-O2-aCc"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heidelberg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="err-5s-gMS">
+                                            <rect key="frame" x="8" y="5" width="86.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhw-Xo-Edc">
+                                            <rect key="frame" x="8" y="24.5" width="35" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="err-5s-gMS" secondAttribute="leading" id="77q-LH-Rs9"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Rhw-Xo-Edc" secondAttribute="leading" id="gg3-Dl-Klv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="q3b-ig-vOl" secondAttribute="trailing" id="h1W-km-FXc"/>
+                                        <constraint firstItem="q3b-ig-vOl" firstAttribute="centerY" secondItem="QX0-uR-paG" secondAttribute="centerY" id="h5r-bf-ada"/>
+                                        <constraint firstItem="Rhw-Xo-Edc" firstAttribute="top" secondItem="err-5s-gMS" secondAttribute="bottom" constant="-1" id="ojS-pp-Ih1"/>
+                                        <constraint firstItem="err-5s-gMS" firstAttribute="top" secondItem="QX0-uR-paG" secondAttribute="topMargin" constant="-3" id="tpl-1S-och"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="stationNameLabel" destination="err-5s-gMS" id="hfr-Tv-Wc1"/>
+                                    <outlet property="stationSubtitleLabel" destination="Rhw-Xo-Edc" id="TMO-eY-hgB"/>
+                                    <outlet property="statusView" destination="q3b-ig-vOl" id="5ot-8f-qx4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Mg9-sV-hNl" id="3X3-Kk-0CA"/>
+                            <outlet property="delegate" destination="Mg9-sV-hNl" id="FPd-tj-DxH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Gepeicherte Reisen" id="Kze-3S-PlN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YCh-bw-c88" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-437" y="1181"/>
+        </scene>
+        <!--Reisen-->
+        <scene sceneID="YjS-b0-RS7">
+            <objects>
+                <navigationController id="9kV-sY-Fdb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reisen" image="1451865368_elevator" selectedImage="1451865368_elevator" id="8cQ-f2-Dcc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Sc-v6-SRx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Mg9-sV-hNl" kind="relationship" relationship="rootViewController" id="OaU-ES-KxT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hAy-1b-pOF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1110" y="1181"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Gtu-dP-Wxr">
+            <objects>
+                <tabBarController id="Uuj-ur-Aci" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="7ey-h3-E3v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="E4Z-RJ-ptS" kind="relationship" relationship="viewControllers" id="kIV-I9-zxX"/>
+                        <segue destination="9kV-sY-Fdb" kind="relationship" relationship="viewControllers" id="fnj-rW-TBe"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5m-Ms-0o6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1838" y="377"/>
         </scene>
         <!--Fahrstühle-->
         <scene sceneID="yB7-A8-njS">
@@ -182,12 +287,19 @@
                             <outlet property="delegate" destination="Ux8-9S-rJn" id="tyu-Lg-BZO"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="jmX-Xf-HaI">
+                        <barButtonItem key="rightBarButtonItem" title="Reise speichern" id="esf-PY-t2s">
+                            <connections>
+                                <action selector="saveTrip:" destination="Ux8-9S-rJn" id="nL3-V8-pGS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82n-Vd-1Wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="248" y="377"/>
         </scene>
-        <!--Elevator Location Controller-->
+        <!--Title-->
         <scene sceneID="1AF-NZ-jco">
             <objects>
                 <viewController id="sca-4I-TK2" customClass="ElevatorLocationController" customModule="AccessibleBahn" customModuleProvider="target" sceneMemberID="viewController">
@@ -211,6 +323,13 @@
                             <constraint firstItem="Sgj-FB-RQ0" firstAttribute="top" secondItem="thh-Ho-WBq" secondAttribute="bottom" id="sg8-jQ-7yc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="KD0-od-OGi">
+                        <barButtonItem key="rightBarButtonItem" image="glyphicons-234-direction" id="yLR-9d-y24">
+                            <connections>
+                                <action selector="displayUserLocation:" destination="sca-4I-TK2" id="wsP-Z6-ciE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Sgj-FB-RQ0" id="Bp0-mm-tkV"/>
                     </connections>
@@ -220,4 +339,10 @@
             <point key="canvasLocation" x="928" y="377"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1451865368_elevator" width="32" height="32"/>
+        <image name="glyphicons-15-train" width="48" height="48"/>
+        <image name="glyphicons-234-direction" width="48" height="48"/>
+    </resources>
+    <color key="tintColor" red="0.89019607840000003" green="0.3803921569" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
