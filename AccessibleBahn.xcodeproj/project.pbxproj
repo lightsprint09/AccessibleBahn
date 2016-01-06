@@ -125,13 +125,13 @@
 			children = (
 				94DFECDA1C346DB2007C49BB /* RoundView.swift */,
 				94157D5E1C3304A800557392 /* AppDelegate.swift */,
+				943C15EF1C3814AF006FF62E /* model */,
 				943C15F41C386B0A006FF62E /* controller */,
 				94157D621C3304A800557392 /* Main.storyboard */,
 				94DFECDE1C347022007C49BB /* StationCell.swift */,
 				94157D651C3304A800557392 /* Assets.xcassets */,
 				94157D671C3304A800557392 /* LaunchScreen.storyboard */,
 				94157D6A1C3304A800557392 /* Info.plist */,
-				943C15EF1C3814AF006FF62E /* model */,
 				94E2F2B71C3416600033C5EA /* stationData.plist */,
 			);
 			path = AccessibleBahn;

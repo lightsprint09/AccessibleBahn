@@ -18,58 +18,65 @@ func reduceActivity(previousStatus: ElevatorStatus, elevator: Elevator) -> Eleva
     return elevator.status
 }
 
+enum ElevatorFecthError: ErrorType {
+    case MissingStationNumber
+    case NetworkError(NSError)
+    case ParseError(NSData?)
+}
+
 class ElevatorFetcher: NSObject {
     let baseURL = NSURL(string: "http://adam.noncd.db.de")
     let session = NSURLSession.sharedSession()
     
-    func fetchElevator(station: Station, onSucces:([Elevator])->Void, onError:(NSError)->()) {
-        guard let stationNumber = station.stationNumber, let url = NSURL(string: "/api/v1.0/stations/\(stationNumber)", relativeToURL: baseURL) else {
-            onError(NSError(domain: "", code: 0, userInfo: nil))
-            return }
+    func fetchElevator(station: Station, onSucces:([Elevator])->Void, onError:(ElevatorFecthError)->()) {
+        guard let stationNumber = station.stationNumber,
+            let url = NSURL(string: "/api/v1.0/stations/\(stationNumber)", relativeToURL: baseURL) else {
+            onError(.MissingStationNumber)
+            return
+        }
         print(station.name, url.absoluteString)
-        let dataTaks = session.dataTaskWithURL(url) {data , _ , _ in
+        let dataTaks = session.dataTaskWithURL(url) {data , _ , error in
+            if let error = error {
+                return onError(.NetworkError(error))
+            }
             do {
                 let elevators = try self.parseElevators(data!)
                 onSucces(elevators)
-                
             }catch{
                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+                onError(.ParseError(data))
             }
-            
         }
         dataTaks.resume()
     }
     
-    func fetchElevatorsForTrip(stops:[Station], onSucces:([Station], ElevatorStatus)->Void, onError:(NSError)->()) {
+    func fetchElevatorsForTrip(stops:[Station], onSucces:([Station], ElevatorStatus)->Void, onError:(ElevatorFecthError)->()) {
         var finalList = [Elevator]()
         var stations = [Station]()
-        var i = 0 {
+        var processedStations = 0 {
             didSet {
-                if i == stops.count {
+                if processedStations == stops.count {
+                    let statusCombind = finalList.reduce(ElevatorStatus.Active, combine: reduceActivity)
                     dispatch_async(dispatch_get_main_queue(), {
-                        onSucces(stations, finalList.reduce(ElevatorStatus.Active, combine: reduceActivity))
+                        onSucces(stations, statusCombind)
                     })
                 }
             }
         }
-        var testI = 0
+        var mappedStationIndex = 0
         _ = stops.map{stop in
-            let ii = testI
-            testI++
-             stations.append(stop)
+            let currentStationIndex = mappedStationIndex
+            mappedStationIndex++
+            stations.append(stop)
             self.fetchElevator(stop, onSucces: {elevators in
-                stations[ii].setElevators(elevators)
-               
+                stations[currentStationIndex].setElevators(elevators)
                 finalList.appendContentsOf(elevators)
-                i++
+                processedStations++
                 }, onError: {_ in
-                    i++
+                    processedStations++
             })
         }
-        
     }
-    
-    
     
     func parseElevators(data:NSData) throws -> [Elevator] {
         guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? [String: AnyObject], let elevators = json["facilities"] as? [Dictionary<String, AnyObject>] else { return [] }
