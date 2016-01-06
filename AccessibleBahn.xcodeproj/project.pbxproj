@@ -66,6 +66,8 @@
 		943C15ED1C381428006FF62E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		943C15F01C3814C9006FF62E /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		943C15F21C386AEB006FF62E /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
+		943C15F51C3AEC9D006FF62E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		943C15F61C3AEC9D006FF62E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		94DFECD81C341C37007C49BB /* ElevatorFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElevatorFetcher.swift; sourceTree = "<group>"; };
 		94DFECDA1C346DB2007C49BB /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		94DFECDC1C346F62007C49BB /* StationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewController.swift; sourceTree = "<group>"; };
@@ -131,7 +133,6 @@
 				94157D6A1C3304A800557392 /* Info.plist */,
 				943C15EF1C3814AF006FF62E /* model */,
 				94E2F2B71C3416600033C5EA /* stationData.plist */,
-				94DFECD81C341C37007C49BB /* ElevatorFetcher.swift */,
 			);
 			path = AccessibleBahn;
 			sourceTree = "<group>";
@@ -162,6 +163,7 @@
 				943C15ED1C381428006FF62E /* Location.swift */,
 				943C15EB1C3813FE006FF62E /* ElevatorStatus.swift */,
 				943C15F01C3814C9006FF62E /* Trip.swift */,
+				94DFECD81C341C37007C49BB /* ElevatorFetcher.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -361,6 +363,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				94157D631C3304A800557392 /* Base */,
+				943C15F51C3AEC9D006FF62E /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				94157D681C3304A800557392 /* Base */,
+				943C15F61C3AEC9D006FF62E /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

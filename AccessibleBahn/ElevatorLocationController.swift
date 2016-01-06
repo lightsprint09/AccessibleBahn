@@ -25,7 +25,6 @@ class ElevatorLocationController: UIViewController {
         }
         let region = MKCoordinateRegion(center: locationRegion, span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
         mapView.setRegion(region, animated: true)
-        
     }
     
     @IBAction func displayUserLocation(sender: AnyObject) {

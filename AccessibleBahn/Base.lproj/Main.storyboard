@@ -69,11 +69,11 @@
                                     <constraint firstItem="DnJ-VQ-tGi" firstAttribute="centerX" secondItem="SeF-vS-r3R" secondAttribute="centerX" id="wOf-s6-wva"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNF-y5-qQ3">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNF-y5-qQ3">
                                 <rect key="frame" x="0.0" y="64" width="600" height="537"/>
                                 <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yn1-LR-94Y">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yn1-LR-94Y">
                                 <rect key="frame" x="0.0" y="600" width="600" height="0.0"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.3803921569" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -287,7 +287,7 @@
                             <outlet property="delegate" destination="Ux8-9S-rJn" id="tyu-Lg-BZO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="jmX-Xf-HaI">
+                    <navigationItem key="navigationItem" title="Farhstühle" id="jmX-Xf-HaI">
                         <barButtonItem key="rightBarButtonItem" title="Reise speichern" id="esf-PY-t2s">
                             <connections>
                                 <action selector="saveTrip:" destination="Ux8-9S-rJn" id="nL3-V8-pGS"/>

@@ -1,0 +1,45 @@
+
+/* Class = "UITabBarItem"; title = "Reisen"; ObjectID = "8cQ-f2-Dcc"; */
+"8cQ-f2-Dcc.title" = "Reisen";
+
+/* Class = "UILabel"; text = "10 Fahrstühle geprüft"; ObjectID = "DnJ-VQ-tGi"; */
+"DnJ-VQ-tGi.text" = "10 Fahrstühle geprüft";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "KD0-od-OGi"; */
+"KD0-od-OGi.title" = "Title";
+
+/* Class = "UINavigationItem"; title = "Gepeicherte Reisen"; ObjectID = "Kze-3S-PlN"; */
+"Kze-3S-PlN.title" = "Gepeicherte Reisen";
+
+/* Class = "UILabel"; text = "Fahrstühle alle in Ordung"; ObjectID = "PPC-7Q-zZh"; */
+"PPC-7Q-zZh.text" = "Fahrstühle alle in Ordung";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Rhw-Xo-Edc"; */
+"Rhw-Xo-Edc.text" = "Label";
+
+/* Class = "UITableViewController"; title = "Fahrstühle"; ObjectID = "Ux8-9S-rJn"; */
+"Ux8-9S-rJn.title" = "Fahrstühle";
+
+/* Class = "UIButton"; normalTitle = "Prüfe Fahrstühle"; ObjectID = "Yn1-LR-94Y"; */
+"Yn1-LR-94Y.normalTitle" = "Prüfe Fahrstühle";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "a2S-8O-Nh4"; */
+"a2S-8O-Nh4.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Zurück"; ObjectID = "edM-KQ-P7r"; */
+"edM-KQ-P7r.title" = "Zurück";
+
+/* Class = "UILabel"; text = "Heidelberg"; ObjectID = "err-5s-gMS"; */
+"err-5s-gMS.text" = "Heidelberg";
+
+/* Class = "UIBarButtonItem"; title = "Reise speichern"; ObjectID = "esf-PY-t2s"; */
+"esf-PY-t2s.title" = "Reise speichern";
+
+/* Class = "UINavigationItem"; title = "Farhstühle"; ObjectID = "jmX-Xf-HaI"; */
+"jmX-Xf-HaI.title" = "Farhstühle";
+
+/* Class = "UILabel"; text = "Heidelberg"; ObjectID = "qdK-6J-xzU"; */
+"qdK-6J-xzU.text" = "Heidelberg";
+
+/* Class = "UITabBarItem"; title = "Verbindungen"; ObjectID = "zNe-us-2ey"; */
+"zNe-us-2ey.title" = "Verbindungen";

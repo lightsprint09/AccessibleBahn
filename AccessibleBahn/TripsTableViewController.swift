@@ -16,7 +16,6 @@ class TripsTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return TripsTableViewController.trips.count
     }

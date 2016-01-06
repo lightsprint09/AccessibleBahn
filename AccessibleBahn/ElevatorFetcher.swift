@@ -26,7 +26,7 @@ class ElevatorFetcher: NSObject {
         guard let stationNumber = station.stationNumber, let url = NSURL(string: "/api/v1.0/stations/\(stationNumber)", relativeToURL: baseURL) else {
             onError(NSError(domain: "", code: 0, userInfo: nil))
             return }
-        print(url.absoluteString)
+        print(station.name, url.absoluteString)
         let dataTaks = session.dataTaskWithURL(url) {data , _ , _ in
             do {
                 let elevators = try self.parseElevators(data!)
@@ -49,15 +49,17 @@ class ElevatorFetcher: NSObject {
                     dispatch_async(dispatch_get_main_queue(), {
                         onSucces(stations, finalList.reduce(ElevatorStatus.Active, combine: reduceActivity))
                     })
-                    
                 }
             }
         }
+        var testI = 0
         _ = stops.map{stop in
+            let ii = testI
+            testI++
+             stations.append(stop)
             self.fetchElevator(stop, onSucces: {elevators in
-                var stop = stop
-                stop.setElevators(elevators)
-                stations.append(stop)
+                stations[ii].setElevators(elevators)
+               
                 finalList.appendContentsOf(elevators)
                 i++
                 }, onError: {_ in
