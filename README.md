@@ -1,6 +1,6 @@
-
-
 # AccessibleBahn
+<img src="https://raw.githubusercontent.com/lightsprint09/AccessibleBahn/master/Screenshot-2.png" width="280">
+
 
 This applications helps people which depend on elevators when using public transportation. One can search for a train connection in the app. The app parses the Station information and loads the elevator status. You know imediatly when an elevator is not working.
 
