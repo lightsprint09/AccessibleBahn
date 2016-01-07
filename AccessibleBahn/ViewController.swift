@@ -15,7 +15,6 @@ class ViewController: UIViewController, WKNavigationDelegate{
     var webView: WKWebView!
     
     @IBOutlet weak var browserBackbutton: UIBarButtonItem!
-    
     @IBOutlet weak var statusBar: UIView!
     @IBOutlet weak var statusBarHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var checkRouteButtonHeightConstraint: NSLayoutConstraint!
@@ -44,7 +43,6 @@ class ViewController: UIViewController, WKNavigationDelegate{
         webViewContainer.addConstraints(contraint)
         let contraint2 = NSLayoutConstraint.constraintsWithVisualFormat("V:|[subview]|", options:.DirectionLeadingToTrailing, metrics: nil, views: ["subview": webView])
         webViewContainer.addConstraints(contraint2)
-        
     }
     
     @IBAction func back(sender: AnyObject) {
