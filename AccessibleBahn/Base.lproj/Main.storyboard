@@ -332,6 +332,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Sgj-FB-RQ0" id="Bp0-mm-tkV"/>
+                        <outlet property="showUserLocation" destination="yLR-9d-y24" id="Bip-p3-mVd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMe-jg-ca6" userLabel="First Responder" sceneMemberID="firstResponder"/>

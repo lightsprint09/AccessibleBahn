@@ -18,5 +18,6 @@ class StationCell: UITableViewCell {
         statusView.backgroundColor = station.getStationElevatorStatus()?.color
         let elevatorCount = station.elevators?.count ?? 0
         stationSubtitleLabel.text = "\(elevatorCount) \(Elevator.getCorrectWord(elevatorCount))"
+        statusView.accessibilityLabel = station.getStationElevatorStatus()?.text
     }
 }

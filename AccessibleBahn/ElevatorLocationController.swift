@@ -13,8 +13,10 @@ class ElevatorLocationController: UIViewController {
     var station: Station!
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    @IBOutlet weak var showUserLocation: UIBarButtonItem!
     
     override func viewDidLoad() {
+        showUserLocation.accessibilityLabel = "Eigene Position zeigen"
         title = station.name
         guard let locationRegion = station.elevators?.first?.location.locationCoordinate else { return }
         for elevator in station.elevators! {
