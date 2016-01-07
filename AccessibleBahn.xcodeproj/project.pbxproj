@@ -21,6 +21,7 @@
 		943C15EE1C381428006FF62E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C15ED1C381428006FF62E /* Location.swift */; };
 		943C15F11C3814C9006FF62E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C15F01C3814C9006FF62E /* Trip.swift */; };
 		943C15F31C386AEB006FF62E /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C15F21C386AEB006FF62E /* TripsTableViewController.swift */; };
+		943C15F91C3E9478006FF62E /* TrainConnectionDOMParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C15F81C3E9478006FF62E /* TrainConnectionDOMParser.swift */; };
 		94DFECD91C341C37007C49BB /* ElevatorFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DFECD81C341C37007C49BB /* ElevatorFetcher.swift */; };
 		94DFECDB1C346DB2007C49BB /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DFECDA1C346DB2007C49BB /* RoundView.swift */; };
 		94DFECDD1C346F62007C49BB /* StationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DFECDC1C346F62007C49BB /* StationTableViewController.swift */; };
@@ -68,6 +69,7 @@
 		943C15F21C386AEB006FF62E /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		943C15F51C3AEC9D006FF62E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		943C15F61C3AEC9D006FF62E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		943C15F81C3E9478006FF62E /* TrainConnectionDOMParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainConnectionDOMParser.swift; sourceTree = "<group>"; };
 		94DFECD81C341C37007C49BB /* ElevatorFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElevatorFetcher.swift; sourceTree = "<group>"; };
 		94DFECDA1C346DB2007C49BB /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		94DFECDC1C346F62007C49BB /* StationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				94DFECDA1C346DB2007C49BB /* RoundView.swift */,
 				94157D5E1C3304A800557392 /* AppDelegate.swift */,
+				943C15F71C3E944D006FF62E /* Service */,
 				943C15EF1C3814AF006FF62E /* model */,
 				943C15F41C386B0A006FF62E /* controller */,
 				94157D621C3304A800557392 /* Main.storyboard */,
@@ -163,7 +166,6 @@
 				943C15ED1C381428006FF62E /* Location.swift */,
 				943C15EB1C3813FE006FF62E /* ElevatorStatus.swift */,
 				943C15F01C3814C9006FF62E /* Trip.swift */,
-				94DFECD81C341C37007C49BB /* ElevatorFetcher.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -177,6 +179,15 @@
 				943C15F21C386AEB006FF62E /* TripsTableViewController.swift */,
 			);
 			name = controller;
+			sourceTree = "<group>";
+		};
+		943C15F71C3E944D006FF62E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				94DFECD81C341C37007C49BB /* ElevatorFetcher.swift */,
+				943C15F81C3E9478006FF62E /* TrainConnectionDOMParser.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 				943C15EE1C381428006FF62E /* Location.swift in Sources */,
 				94157D8D1C340BC000557392 /* Station.swift in Sources */,
 				94DFECDF1C347022007C49BB /* StationCell.swift in Sources */,
+				943C15F91C3E9478006FF62E /* TrainConnectionDOMParser.swift in Sources */,
 				94157D5F1C3304A800557392 /* AppDelegate.swift in Sources */,
 				943C15E81C358416006FF62E /* ElevatorLocationController.swift in Sources */,
 				94DFECD91C341C37007C49BB /* ElevatorFetcher.swift in Sources */,

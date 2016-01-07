@@ -36,23 +36,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeF-vS-r3R">
-                                <rect key="frame" x="5" y="64" width="595" height="0.0"/>
+                                <rect key="frame" x="5" y="64" width="595" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fahrstühle alle in Ordung" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPC-7Q-zZh">
-                                        <rect key="frame" x="198" y="-18" width="199.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fahrstühle alle in Ordung" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPC-7Q-zZh">
+                                        <rect key="frame" x="48.5" y="7" width="498.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yew-fy-RWJ">
-                                        <rect key="frame" x="553" y="-11" width="22" height="22"/>
+                                        <rect key="frame" x="551" y="14" width="24" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="uP4-a5-qGB"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="Ux8-9S-rJn" kind="show" id="onJ-Ys-9qB"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Fahrstühle geprüft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnJ-VQ-tGi">
-                                        <rect key="frame" x="229" y="0.0" width="136.5" height="17"/>
+                                        <rect key="frame" x="229" y="25" width="136.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -60,21 +63,22 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.65490196079999996" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="3xu-Td-88W"/>
+                                    <constraint firstAttribute="height" constant="50" id="3xu-Td-88W"/>
                                     <constraint firstItem="PPC-7Q-zZh" firstAttribute="centerX" secondItem="SeF-vS-r3R" secondAttribute="centerX" id="KBc-xe-Rbw"/>
                                     <constraint firstItem="DnJ-VQ-tGi" firstAttribute="top" secondItem="PPC-7Q-zZh" secondAttribute="bottom" constant="-2" id="LLD-tw-wue"/>
                                     <constraint firstItem="PPC-7Q-zZh" firstAttribute="centerY" secondItem="SeF-vS-r3R" secondAttribute="centerY" constant="-8" id="gHV-S2-dIu"/>
                                     <constraint firstItem="Yew-fy-RWJ" firstAttribute="centerY" secondItem="SeF-vS-r3R" secondAttribute="centerY" id="hz5-3b-Itu"/>
                                     <constraint firstAttribute="trailing" secondItem="Yew-fy-RWJ" secondAttribute="trailing" constant="20" id="kZ7-zR-Bcg"/>
+                                    <constraint firstItem="Yew-fy-RWJ" firstAttribute="leading" secondItem="PPC-7Q-zZh" secondAttribute="trailing" priority="900" constant="4" id="lCN-jD-BJA"/>
                                     <constraint firstItem="DnJ-VQ-tGi" firstAttribute="centerX" secondItem="SeF-vS-r3R" secondAttribute="centerX" id="wOf-s6-wva"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNF-y5-qQ3">
-                                <rect key="frame" x="0.0" y="64" width="600" height="537"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNF-y5-qQ3">
+                                <rect key="frame" x="0.0" y="114" width="600" height="438"/>
                                 <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yn1-LR-94Y">
-                                <rect key="frame" x="0.0" y="600" width="600" height="0.0"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yn1-LR-94Y">
+                                <rect key="frame" x="0.0" y="551" width="600" height="0.0"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.3803921569" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="2Ms-G9-mcd"/>
@@ -311,7 +315,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-FB-RQ0">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-FB-RQ0">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </mapView>
                         </subviews>

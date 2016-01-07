@@ -15,13 +15,15 @@ class ViewController: UIViewController, WKNavigationDelegate{
     var webView: WKWebView!
     
     @IBOutlet weak var browserBackbutton: UIBarButtonItem!
-    let elevatorFetcher = ElevatorFetcher()
+    
     @IBOutlet weak var statusBar: UIView!
     @IBOutlet weak var statusBarHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var checkRouteButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var statusTextLabel: UILabel!
     @IBOutlet weak var elevatoCountLabel: UILabel!
     
+    let elevatorFetcher = ElevatorFetcher()
+    let connectionDOMParser = TrainConnectionDOMParser()
     var stops: [Station]!
     
     override func viewDidLoad() {
@@ -44,6 +46,7 @@ class ViewController: UIViewController, WKNavigationDelegate{
         webViewContainer.addConstraints(contraint2)
         
     }
+    
     @IBAction func back(sender: AnyObject) {
         webView.goBack()
         self.statusBarHeightContraint.constant = 0
@@ -53,18 +56,9 @@ class ViewController: UIViewController, WKNavigationDelegate{
     }
 
     @IBAction func checkElevators(sender: AnyObject) {
-        let jsString = "function addStationsNames(className, stationsList, stationsSet) {   var stationNodes = document.getElementsByClassName(className);  for(var i= 0; i < stationNodes.length; i++){        var name = stationNodes[i].getElementsByClassName('bold')[0].innerHTML;         if(stationsSet[name]) {             continue        }       var station = {name: name};         stationsList.push(station);         stationsSet[name] = true;   } } var stationsList = []; var stationsSet = {}; addStationsNames('routeStart', stationsList, stationsSet); addStationsNames('routeChange', stationsList, stationsSet); addStationsNames('routeEnd', stationsList, stationsSet); JSON.stringify(stationsList);"
-        webView.evaluateJavaScript(jsString, completionHandler: didGetStationsData)
-    }
-    
-    func didGetStationsData(data: AnyObject?, error: NSError?) {
-        guard let result = data as? String, let data = result.dataUsingEncoding(NSUTF8StringEncoding) else { return }
-        let jsonList = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! [[String: AnyObject]]
-        let stations: [Station] = jsonList.map {stationobj in
-            let name = stationobj["name"] as! String
-            return Station(name: name, elevators: nil)
-        }
-        self.elevatorFetcher.fetchElevatorsForTrip(stations, onSucces: didFetchStationWithElevators) { _ in}
+        connectionDOMParser.fetchStations(webView, onSucces: {stations in
+            self.elevatorFetcher.fetchElevatorsForTrip(stations, onSucces: self.didFetchStationWithElevators) { _ in}
+            }, onError: {_ in})
     }
     
     func didFetchStationWithElevators(statins: [Station], status: ElevatorStatus) {

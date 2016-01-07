@@ -32,6 +32,9 @@ class ElevatorLocationController: UIViewController {
     @IBAction func displayUserLocation(sender: AnyObject) {
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
+        mapView.showsCompass = true
+        mapView.rotateEnabled = true
+        mapView.setUserTrackingMode(.FollowWithHeading, animated: true)
     }
     
 }
